@@ -1,0 +1,75 @@
+" should put in /etc/vim/
+
+" ============================
+" setting set
+set nu
+set nolist
+set tags=/home/humphrey/Documents/Kernel/linux-2.6.30.4/tags
+set shiftwidth=4
+set tabstop=4
+set mouse=a
+set hls
+set is
+set ic
+set cindent
+
+
+" ===========================
+" map set
+map <silent> <F8> :TlistOpen<CR>
+"map <F11> <C-]>
+nnoremap <silent> <F11> <C-]>
+map <F10> <C-t>
+nmap wm :WMToggle<CR>
+" nmap <C-s> :w<CR> "以后有时间再来学习map的详细用法
+nnoremap <F1> :w<CR>
+map <F2> :make C<CR>
+map <F3> :make cpp<CR>
+map <F4> :wq<CR>
+" F5
+map [28~ :make exec<CR>
+" F6
+map [17~ :wqa<CR>
+" F7
+map [18~ :TlistToggle<CR>
+" F9
+map [20~ :NERDTreeToggle<CR>
+abbrev inc #include <
+abbrev incio #include <stdio.h><CR>
+abbrev incppio #include <iostream><CR>using namespace std;<CR>
+abbrev intm int main()<CR>{<CR>return 0;<CR>}kOk
+abbrev vimrc /etc/vim/vimrc.local
+
+" ============================
+" Variables Set
+let Tlist_Show_One_File=1
+let Tlist_Exit_OnlyWindow=1  
+let Tlist_WinWidth=50
+let Tlist_Process_File_Always=1
+let NERDTreeWinPos="right"
+let NERDTreeShowBookmarks=1
+" ============================
+" MiniBufExplorer
+let g:miniBufExplMapWindowNavVim = 1 
+let g:miniBufExplMapWindowNavArrows = 1 
+let g:miniBufExplMapCTabSwitchBufs = 1 
+let g:miniBufExplModSelTarget = 1
+let g:miniBufExplMoreThanOne=0
+
+" ============================
+" TBD
+
+" ============================
+" NERDTree & Winmanager
+" let g:NERDTree_title="[NERDTree]"
+" let g:winManagerWindowLayout="NERDTree|TagList"
+
+" function! NERDTree_Start()
+"	exec 'NERDTree'
+" endfunction
+
+" function! NERDTree_IsValid()
+"	return 1
+" endfunction
+
+
