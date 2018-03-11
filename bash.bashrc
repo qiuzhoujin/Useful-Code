@@ -5,6 +5,7 @@ alias gitci='git ci -a -m'
 alias gitlog='git log --pretty="%h(%cd):%s"'
 alias gitlogs='git log --pretty="%h(%cd):%s" --stat'
 alias gitdiff='git difftool'
+alias gitadd='git add *'
 export LESS="-x4 -s"
 export EDITOR=vim
 
