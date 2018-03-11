@@ -1,6 +1,20 @@
 ######################################
-			问题解决
+            问题解决
 ######################################
 **01.push 时, 如何不用每次都输入用户名和密码?
    修改repo中.git/config文件,[remote "origin"]项中url里添加上用户名及密码。
    http://[username:passwd@]github... # 即写入[]中的内容到指定位置。
+
+######################################
+            相关用法
+######################################
+**01.git config
+git config --global user.name "Humphrey.Zhu"
+git config --global user.email zhufang1987@yeah.net
+git config --global core.editor emacs
+git config --global diff.tool vimdiff
+git config --global alias.st status
+git config --global alias.ci commit
+git config --global alias.co checkout
+git config --global alias.br branch
+
