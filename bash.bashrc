@@ -8,3 +8,13 @@ alias gitdiff='git difftool'
 export LESS="-x4 -s"
 export EDITOR=vim
 
+ps1_bak=""
+function chps1()
+{
+	if [ -z $ps1_bak ]; then
+		ps1_bak=$PS1
+		PS1="$ "
+	else
+		PS1=$ps1_bak
+	fi
+}
