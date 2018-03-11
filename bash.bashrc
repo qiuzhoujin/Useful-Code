@@ -16,5 +16,6 @@ function chps1()
 		PS1="$ "
 	else
 		PS1=$ps1_bak
+		ps1_bak=""
 	fi
 }
