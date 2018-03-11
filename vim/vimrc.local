@@ -34,6 +34,8 @@ map [17~ :wqa<CR>
 map [18~ :TlistToggle<CR>
 " F9
 map [20~ :NERDTreeToggle<CR>
+" substitute four spaces for tab
+nmap <C-\>. :%s/	/    /g<CR>
 abbrev inc #include <
 abbrev incio #include <stdio.h><CR>
 abbrev incppio #include <iostream><CR>using namespace std;<CR>
