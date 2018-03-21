@@ -12,6 +12,13 @@ set hls
 set is
 set ic
 set cindent
+set guifont=Lucida_Console:h10:cANSI
+set lines=45
+set columns=140
+set nobackup
+set noundofile
+set autoread
+set et
 
 
 " ===========================
@@ -34,6 +41,8 @@ map [17~ :wqa<CR>
 map [18~ :TlistToggle<CR>
 " F9
 map [20~ :NERDTreeToggle<CR>
+" cd to the current file's directory
+nmap <C-\>, :cd %:p:h<CR>
 " substitute four spaces for tab
 nmap <C-\>. :%s/	/    /g<CR>
 abbrev inc #include <
@@ -41,15 +50,21 @@ abbrev incio #include <stdio.h><CR>
 abbrev incppio #include <iostream><CR>using namespace std;<CR>
 abbrev intm int main()<CR>{<CR>return 0;<CR>}kOk
 abbrev vimrc /etc/vim/vimrc.local
+abbrev neft NERDTreeFromBookmark temp.txt
+abbrev nef NERDTreeFromBookmark
+abbrev ne NERDTree
 
 " ============================
 " Variables Set
 let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=1  
-let Tlist_WinWidth=50
+let Tlist_WinWidth=30
 let Tlist_Process_File_Always=1
+let Tlist_Enable_Fold_Column = 0
 let NERDTreeWinPos="right"
 let NERDTreeShowBookmarks=1
+let MRU_MAX_Entries=300
+let MRU_Max_Menu_Entries=24
 " ============================
 " MiniBufExplorer
 let g:miniBufExplMapWindowNavVim = 1 
@@ -58,20 +73,18 @@ let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
 let g:miniBufExplMoreThanOne=0
 
-" ============================
-" TBD
+colorscheme evening
 
 " ============================
-" NERDTree & Winmanager
-" let g:NERDTree_title="[NERDTree]"
-" let g:winManagerWindowLayout="NERDTree|TagList"
-
-" function! NERDTree_Start()
-"	exec 'NERDTree'
-" endfunction
-
-" function! NERDTree_IsValid()
-"	return 1
-" endfunction
+" 自动补全相关设定
+" ============================
+set completeopt=longest,menu
+filetype plugin on
+autocmd FileType * setlocal formatoptions-=cro
 
 
+" ============================
+" 保存view,主要是折叠设置
+" ============================
+au BufWinLeave *.txt silent mkview
+au BufWinEnter *.txt silent loadview
