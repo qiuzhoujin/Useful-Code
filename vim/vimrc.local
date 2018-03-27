@@ -44,7 +44,7 @@ map [20~ :NERDTreeToggle<CR>
 " cd to the current file's directory
 nmap <C-\>, :cd %:p:h<CR>
 " substitute four spaces for tab
-nmap <C-\>. :%s/	/    /g<CR>
+"nmap <C-\>. :%s/	/    /g<CR>
 abbrev inc #include <
 abbrev incio #include <stdio.h><CR>
 abbrev incppio #include <iostream><CR>using namespace std;<CR>
@@ -82,9 +82,30 @@ set completeopt=longest,menu
 filetype plugin on
 autocmd FileType * setlocal formatoptions-=cro
 
+" ============================
+" 将tab替换成4个空格,删除行末的空格
+" ============================
+function CleanUp()
+	let orgpos = getpos(".")
+	let line = orgpos[1]
+	let col = orgpos[2]
+	if search('	', 'w') != 0
+		%s/	/    /g
+		call cursor(line, col)
+	endif
+	if search('  *$', 'w') != 0
+		%s/  *$//g
+		call cursor(line, col)
+	endif
+	silent update
+endfunction
+map <C-\>. :call CleanUp()<CR>
 
 " ============================
-" 保存view,主要是折叠设置
+" 保存view,主要是折叠设置,及其他自动命令
 " ============================
 au BufWinLeave *.txt silent mkview
 au BufWinEnter *.txt silent loadview
+au BufWinLeave *.cpp silent call CleanUp()
+au BufWinLeave *.c silent call CleanUp()
+au BufWinLeave *.h silent call CleanUp()
