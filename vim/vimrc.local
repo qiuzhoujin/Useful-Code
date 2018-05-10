@@ -108,6 +108,6 @@ map <C-\>. :call CleanUp()<CR>
 " ============================
 au BufWinLeave *.txt silent mkview
 au BufWinEnter *.txt silent loadview
-au BufWinLeave *.cpp silent call CleanUp()
-au BufWinLeave *.c silent call CleanUp()
-au BufWinLeave *.h silent call CleanUp()
+au BufWriteCmd *.cpp silent call CleanUp()
+au BufWriteCmd *.c silent call CleanUp()
+au BufWriteCmd *.h silent call CleanUp()
