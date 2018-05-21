@@ -50,7 +50,7 @@ nmap <C-\>, :cd %:p:h<CR>
 abbrev inc #include <
 abbrev incio #include <stdio.h><CR>
 abbrev incppio #include <iostream><CR>using namespace std;<CR>
-abbrev #d #define
+abbrev d #define
 abbrev intm int main()<CR>{<CR>return 0;<CR>}kOk
 abbrev vimrc /etc/vim/vimrc.local
 abbrev neft NERDTreeFromBookmark temp.txt
