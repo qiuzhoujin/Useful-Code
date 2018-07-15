@@ -1,9 +1,3 @@
-# 
-# humphrey added:
-# 01.should put to /etc/mysql/mariadb.conf.d/
-# 02.if mysql_install_db can be found, comment skip-grant-tables
-# 
-# =============================================
 # Example MariaDB config file for large systems.
 #
 # This is for a large system with memory = 512M where the system runs mainly
@@ -25,14 +19,14 @@
 [client]
 #password       = your_password
 port            = 3306
-socket          = /home/mysqldata/mysql.sock
+socket          = /var/run/mysqld/mysqld.sock
 
 # Here follows entries for some specific programs
 
 # The MariaDB server
 [mysqld]
 port            = 3306
-socket          = /home/mysqldata/mysql.sock
+socket          = /var/run/mysqld/mysqld.sock
 skip-external-locking
 skip-grant-tables
 key_buffer_size = 256M
@@ -149,6 +143,7 @@ max_allowed_packet = 16M
 no-auto-rehash
 # Remove the next comment character if you are not familiar with SQL
 #safe-updates
+socket          = /var/run/mysqld/mysqld.sock
 
 [myisamchk]
 key_buffer_size = 128M

@@ -12,6 +12,9 @@
 DAEMON=/usr/sbin/mysqld
 case "$1" in
   start)
+    mkdir -p /var/run/mysqld
+	chmod 777 -R /var/run/mysqld
+	chown mysql:mysql -R /var/run/mysqld
 	start-stop-daemon --start --quiet --exec /usr/sbin/mysqld -- --user=root
 	;;
   *)
