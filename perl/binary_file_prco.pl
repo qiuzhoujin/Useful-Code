@@ -7,12 +7,16 @@
 # $ARGV[0]表示perl脚本后的第一个参数,而不是perl脚本名。这一点与C及bash不同。
 open(in, $ARGV[0]) or die "Cannot open file '$ARGV[0]': $!\n";
 binmode(in);
+open(out, '>out.dat') or die "Cannot open file 'out.dat': $!\n";
+binmode(out);
 
 $framelen = 32;
 $line = "";
 $str = "";
 $ushort_data = 0;  # unsigned short型数据(两个字节)
 $uint_data = 0;    # unsigned int型数据(四个字节)
+@uchar_arr=(0,0);  # unsigned char型数组
+$i = 0;
 
 while (read(in, $line, $framelen) == $framelen)
 {
@@ -25,6 +29,22 @@ while (read(in, $line, $framelen) == $framelen)
 	$uint_data = int(unpack('N', substr($line, 10, 4)));
 	printf "uint_data:0x%08X\n", $uint_data;
 	print "------\n\n";
+
+	$str = unpack('H*', substr($line, 0, 16));
+	for ($i = 0; $i < 8; $i++)
+	{
+		$uchar_arr[$i] = hex(substr($str, $i * 2, 2));
+		$uchar_arr[$i]++;
+	}
+
+	$str = "";
+    # 在标量上下文，数组形式表示的是其长度。
+	for ($i = 0; $i < @uchar_arr; $i++)
+	{
+		$str .= pack('C', $uchar_arr[$i]);
+	}
+	print out $str;
 }
 
 close(in);
+close(out);
