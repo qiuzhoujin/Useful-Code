@@ -19,8 +19,11 @@ set nobackup
 set noundofile
 set autoread
 set et
+set encoding=gbk
 let &termencoding=&encoding
-set fileencoding=utf-8,gbk
+"set fileencoding=utf-8,gbk
+set fileencoding=gbk
+set fencs=gbk,utf-8,usc-bom,eucjp,gb18030,gb2312,cp936
 
 
 " ===========================
