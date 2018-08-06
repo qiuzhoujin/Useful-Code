@@ -1,0 +1,11 @@
+#!/bin/sh
+file=modification_time.txt
+line="line"
+time="time"
+cat $file | while read line
+do
+	if [ -f $line ]; then
+		read time
+		touch -d "$time" $line
+	fi
+done

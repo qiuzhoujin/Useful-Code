@@ -1,0 +1,15 @@
+#!/bin/sh
+file=modification_time.txt
+tmpfile=/tmp/$$.txt
+line="line"
+git status -s > $tmpfile
+sed -E -i "s/[AMR]+ +//" $tmpfile
+sed -E -i "/^\?+/d" $tmpfile
+cat /dev/null > $file
+cat $tmpfile | while read line
+do
+	echo $line >> $file
+	stat -c %y $line >> $file
+done
+git add $file
+
