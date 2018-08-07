@@ -3,8 +3,11 @@ file=modification_time.txt
 tmpfile=/tmp/$$.txt
 line="line"
 git status -s > $tmpfile
-sed -E -i "s/[AMR]+ +//" $tmpfile
+sed -E -i "s/[AM]+ +//" $tmpfile
 sed -E -i "/^\?+/d" $tmpfile
+sed -E -i "/^D/d" $tmpfile
+sed -E -i "^ +/d" $tmpfile
+sed -E -i "/^R/s/^R.*-> //" $tmpfile
 cat /dev/null > $file
 cat $tmpfile | while read line
 do
