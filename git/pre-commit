@@ -15,4 +15,4 @@ do
 	stat -c %y $line >> $file
 done
 git add $file
-
+cat /dev/null > $file
