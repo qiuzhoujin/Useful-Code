@@ -4,7 +4,7 @@ line="line"
 time="time"
 cat $file | while read line
 do
-	if [ -f "$line" ]; then
+	if [ -f "$line" -o -d "$line" ]; then
 		read time
 		touch -d "$time" "$line"
 	fi
