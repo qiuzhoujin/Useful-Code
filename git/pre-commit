@@ -2,7 +2,12 @@
 file=modification_time.txt
 tmpfile=/tmp/$$.txt
 line="line"
-find foo > $tmpfile
+git ls-tree master &> /dev/null
+if [ $? -ne 0 ]; then
+	git status -s | tr -s ' ' | cut -d'' -f2 | xargs -l find > $tmpfile
+else
+	git ls-tree master | cut -f2 | xargs -l find > $tmpfile
+fi
 cat /dev/null > $file
 cat $tmpfile | while read line
 do
